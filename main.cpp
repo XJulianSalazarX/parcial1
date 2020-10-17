@@ -3,11 +3,11 @@
 
 using namespace std;
 int TiempoDeImpactoBalaO(int *,int *);
-
+float pi=3.1516, g=-9.81;
 
 int main()
 {
-    float *Cdefensivo = NULL, *Cofensivo = NULL, g = -9.8,AreaBalaO=0, pi=3.1516;
+    float *Cdefensivo = NULL, *Cofensivo = NULL;
     Cofensivo = new float[5];// canion ofensivo
     Cdefensivo = new float[5];// canion defensivo
     int opc = 0;
@@ -22,16 +22,16 @@ int main()
     switch (opc) {
     case 1:{
         //canion defensivo
-        Cofensivo[0] = 0;
-        Cofensivo[1] = 0;
-        Cofensivo[2] = 100;
-        Cofensivo[3] = 45;
-        Cofensivo[4] = (g*Cofensivo[2])/(sin(2*Cdefensivo[3]));//
+        Cofensivo[0] = 0;//posicion en x
+        Cofensivo[1] = 0;//posicion en y
+        Cofensivo[2] = 100;//distancia al canion defensivo
+        Cofensivo[3] = 45;//angulo de disparo
+        Cofensivo[4] = (g*Cofensivo[2])/(sin(2*Cdefensivo[3]));//velocidad inicial
         //canion defensivo
-        Cdefensivo[0] = 100;
-        Cdefensivo[1] = 0;
-        Cdefensivo[2] = 100;
-        AreaBalaO = pi*(pow((100*0.05),2));
+        Cdefensivo[0] = 100;//posicion en x
+        Cdefensivo[1] = 0;//posicion en y
+        Cdefensivo[2] = 100;//distancia al canion d0efensivo;
+        //AreaBalaO = pi*(pow((100*0.05),2));
 
 
 
@@ -64,6 +64,18 @@ int main()
 }
 
 int TiempoDeImpactoBalaO(int *Cofensivo,int *Cdefensivo){
+    int tiempo=0,x=0,y=0,r=0;
+    r= Cofensivo[3] * 0.05;
+    while(true){
+        x = Cofensivo[0] + Cofensivo[4]*cos(Cofensivo[3]);
+        y = Cofensivo[1] + (Cofensivo[4]*sin(45)+g*tiempo)+(0.5*g*pow(tiempo,2));
+        if(x+pi >= Cdefensivo[0]){
+            if((y+r>=Cdefensivo[1]) && (y-r<=Cdefensivo[1]))
+                break;
+        }
+        tiempo += 0.1;
+    }
+    return true;
 
 
 }
