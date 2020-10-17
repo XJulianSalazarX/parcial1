@@ -80,7 +80,7 @@ float TiempoDeImpactoBalaO(float *Cofensivo,float *Cdefensivo){
         }
         tiempo += 0.1;
     }
-    return true;
+    return tiempo;
 
 
 }
