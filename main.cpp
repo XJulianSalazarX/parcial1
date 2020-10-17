@@ -2,10 +2,12 @@
 #include <math.h>
 
 using namespace std;
+int TiempoDeImpactoBalaO(int *,int *);
+
 
 int main()
 {
-    float *Cdefensivo = NULL, *Cofensivo = NULL, g = -9.8,AreaD=0, pi=3.1516;
+    float *Cdefensivo = NULL, *Cofensivo = NULL, g = -9.8,AreaBalaO=0, pi=3.1516;
     Cofensivo = new float[5];// canion ofensivo
     Cdefensivo = new float[5];// canion defensivo
     int opc = 0;
@@ -22,15 +24,15 @@ int main()
         //canion defensivo
         Cofensivo[0] = 0;
         Cofensivo[1] = 0;
-        Cofensivo[2] = 1000;
+        Cofensivo[2] = 100;
         Cofensivo[3] = 45;
         Cofensivo[4] = (g*Cofensivo[2])/(sin(2*Cdefensivo[3]));//
         //canion defensivo
-        Cdefensivo[0] = 1000;
+        Cdefensivo[0] = 100;
         Cdefensivo[1] = 0;
-        Cdefensivo[2] = 1000;
-        AreaD = pi*pow((1000*0,05),2);
-        cout << AreaD << endl;
+        Cdefensivo[2] = 100;
+        AreaBalaO = pi*(pow((100*0.05),2));
+
 
 
 
@@ -59,4 +61,9 @@ int main()
     delete [] Cofensivo;
     delete [] Cdefensivo;
     return 0;
+}
+
+int TiempoDeImpactoBalaO(int *Cofensivo,int *Cdefensivo){
+
+
 }
