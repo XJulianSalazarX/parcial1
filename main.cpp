@@ -2,12 +2,12 @@
 #include <math.h>
 
 using namespace std;
-int TiempoDeImpactoBalaO(int *,int *);
+float TiempoDeImpactoBalaO(float *,float *);
 float pi=3.1516, g=-9.81;
 
 int main()
 {
-    float *Cdefensivo = NULL, *Cofensivo = NULL;
+    float *Cdefensivo = NULL, *Cofensivo = NULL, tiempo=0;;
     Cofensivo = new float[5];// canion ofensivo
     Cdefensivo = new float[5];// canion defensivo
     int opc = 0;
@@ -30,8 +30,13 @@ int main()
         //canion defensivo
         Cdefensivo[0] = 100;//posicion en x
         Cdefensivo[1] = 0;//posicion en y
-        Cdefensivo[2] = 100;//distancia al canion d0efensivo;
+        Cdefensivo[2] = 100;//distancia al canion defensivo;
         //AreaBalaO = pi*(pow((100*0.05),2));
+        tiempo = TiempoDeImpactoBalaO(Cofensivo,Cdefensivo);
+        cout << "Posicion canion ofensivo: ("<<Cofensivo[0]<<","<<Cofensivo[1]<<")\n";
+        cout << "Angulo de disparo: " << Cofensivo[3] << endl;
+        cout << "Velocidad inicial de la bala: "<< Cofensivo[4] << endl;
+        cout << "tiempo en el cual detona la bala: " << tiempo << "s\n";
 
 
 
@@ -63,7 +68,7 @@ int main()
     return 0;
 }
 
-int TiempoDeImpactoBalaO(int *Cofensivo,int *Cdefensivo){
+float TiempoDeImpactoBalaO(float *Cofensivo,float *Cdefensivo){
     int tiempo=0,x=0,y=0,r=0;
     r= Cofensivo[3] * 0.05;
     while(true){
